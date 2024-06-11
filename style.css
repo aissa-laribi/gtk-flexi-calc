@@ -1,0 +1,27 @@
+
+
+/* Apply to the text view */
+.text-view text{
+    background-color: black;
+    color: blanchedalmond;
+}
+
+.text-view_2 text{
+    background-color: black;
+    color: blanchedalmond;
+}
+/* Specific styles for round buttons */
+.round-button {
+    background-image: none;
+    border-radius: 100px;
+    background-color: rgb(20, 19, 18); /* Red background */
+    color: blanchedalmond;
+    font-weight: bold;
+}
+.horizontal{
+    background-color: black;
+    border: 10px solid black;
+}
+.grid{
+    background-color: blue;
+}

@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+    <template class="CalculatorAppWindow" parent="GtkApplicationWindow">
+        <property name="title" translatable="yes">Calculator</property>
+        <property name="default-width">300</property>
+        <property name="default-height">400</property>
+        <child>
+            <object class="GtkGrid" id="grid">
+                <property name="visible">True</property>
+                <property name="column-homogeneous">True</property>
+                <property name="row-homogeneous">True</property>
+                <property name="column-spacing">3</property>
+                <property name="row-spacing">3</property>
+                <child>
+                        <object class="GtkTextView" id="text_view">
+                            <property name="visible">True</property>
+                            <property name="editable">False</property>                               
+                            <style>
+                                <class name="text-view"/>
+                            </style>
+                        </object>
+                    <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">0</property>
+                        <property name="width">4</property> <!-- Span across 4 columns -->
+                    </packing>
+                </child>
+                <child>
+                        <object class="GtkTextView" id="text_view_2">
+                            <property name="visible">True</property>
+                            <property name="editable">False</property>
+                            <property name="justification">right</property>
+                            <property name="wrap_mode">none</property>
+                            <property name="left_margin">10</property>
+                            <property name="right_margin">10</property>                                   
+                            <style>
+                                <class name="text-view_2"/>
+                            </style>
+                        </object>
+                    <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">1</property>
+                        <property name="width">4</property> <!-- Span across 4 columns -->
+                    </packing>
+                </child>
+                <child>
+                    <object class="CalculatorButton" id="del">
+                        <property name="visible">True</property>
+                        <property name="label">DEL</property>
+                    </object>
+                    <packing>
+                        <property name="left-attach">3</property>
+                        <property name="top-attach">2</property>
+                    </packing>
+                </child>
+                <child>
+                    <object id="button-c" class="CalculatorButton">
+                        <property name="visible">True</property>
+                        <property name="label">C</property>
+                        <style>
+                            <class name="round-button"/>
+                        </style>
+
+                    </object>
+                    <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">4</property>
+                    </packing>
+                </child>
+                <child>
+                    <object id="button-brackets" class="CalculatorButton">
+                        <property name="visible">True</property>
+                        <property name="label">()</property>
+                        <style>
+                            <class name="round-button"/>
+                        </style>
+
+                    </object>
+                    <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">4</property>
+                    </packing>
+                </child>
+                <child>
+                    <object id="button-mod" class="CalculatorButton">
+                        <property name="visible">True</property>
+                        <property name="label">mod</property>
+                        <signal name="clicked" handler="on_button_clicked" swapped="no"/>
+                        <style>
+                            <class name="round-button"/>
+                        </style>
+
+                    </object>
+                    <packing>
+                        <property name="left-attach">2</property>
+                        <property name="top-attach">4</property>
+                    </packing>
+                </child>
+                <child>
+                    <object id="button-div" class="CalculatorButton">
+                        <property name="visible">True</property>
+                        <property name="label">/</property>
+                        <signal name="clicked" handler="on_button_clicked" swapped="no"/>
+                        <style>
+                            <class name="round-button"/>
+                        </style>
+
+                    </object>
+                    <packing>
+                        <property name="left-attach">3</property>
+                        <property name="top-attach">4</property>
+                    </packing>
+                </child>
+                <!-- Add more buttons as needed -->
+                 <child>
+                    <object id="7" class="CalculatorButton">
+                        <property name="visible">True</property>
+                        <property name="label">7</property>
+                        <signal name="clicked" handler="on_button_clicked" swapped="no"/>
+                        <style>
+                            <class name="round-button"/>
+                        </style>
+
+                    </object>
+                    <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">5</property>
+                    </packing>
+                </child>
+                <child>
+                    <object id="8" class="CalculatorButton">
+                        <property name="visible">True</property>
+                        <property name="label">8</property>
+                        <signal name="clicked" handler="on_button_clicked" swapped="no"/>
+                        <style>
+                            <class name="round-button"/>
+                        </style>
+
+                    </object>
+                    <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">5</property>
+                    </packing>
+                </child>
+                <child>
+                    <object id="9" class="CalculatorButton">
+                        <property name="visible">True</property>
+                        <property name="label">9</property>
+                        <signal name="clicked" handler="on_button_clicked" swapped="no"/>
+                        <style>
+                            <class name="round-button"/>
+                        </style>
+
+                    </object>
+                    <packing>
+                        <property name="left-attach">2</property>
+                        <property name="top-attach">5</property>
+                    </packing>
+                </child>
+                <child>
+                    <object id="button-mult" class="CalculatorButton">
+                        <property name="visible">True</property>
+                        <property name="label">x</property>
+                        <signal name="clicked" handler="on_button_clicked" swapped="no"/>
+                        <style>
+                            <class name="round-button"/>
+                        </style>
+
+                    </object>
+                    <packing>
+                        <property name="left-attach">3</property>
+                        <property name="top-attach">5</property>
+                    </packing>
+                </child>
+                <!-- Add more buttons as needed -->
+                 <child>
+                    <object id="button-4" class="CalculatorButton">
+                        <property name="visible">True</property>
+                        <property name="label">4</property>
+                        <signal name="clicked" handler="on_button_clicked" swapped="no"/>
+                        <style>
+                            <class name="round-button"/>
+                        </style>
+
+                    </object>
+                    <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">6</property>
+                    </packing>
+                </child>
+                <child>
+                    <object id="button-5" class="CalculatorButton">
+                        <property name="visible">True</property>
+                        <property name="label">5</property>
+                        <signal name="clicked" handler="on_button_clicked" swapped="no"/>
+                        <style>
+                            <class name="round-button"/>
+                        </style>
+
+                    </object>
+                    <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">6</property>
+                    </packing>
+                </child>
+                <child>
+                    <object id="button-6" class="CalculatorButton">
+                        <property name="visible">True</property>
+                        <property name="label">6</property>
+                        <signal name="clicked" handler="on_button_clicked" swapped="no"/>
+                        <style>
+                            <class name="round-button"/>
+                        </style>
+
+                    </object>
+                    <packing>
+                        <property name="left-attach">2</property>
+                        <property name="top-attach">6</property>
+                    </packing>
+                </child>
+                <child>
+                    <object id="button-sub" class="CalculatorButton">
+                        <property name="visible">True</property>
+                        <property name="label">-</property>
+                        <signal name="clicked" handler="on_button_clicked" swapped="no"/>
+                        <style>
+                            <class name="round-button"/>
+                        </style>
+
+                    </object>
+                    <packing>
+                        <property name="left-attach">3</property>
+                        <property name="top-attach">6</property>
+                    </packing>
+                </child>
+                <!--1 to +-->
+                <!-- Add more buttons as needed -->
+                 <child>
+                    <object id="button-1" class="CalculatorButton">
+                        <property name="visible">True</property>
+                        <property name="label">1</property>
+                        <signal name="clicked" handler="on_button_clicked" swapped="no"/>
+                        <style>
+                            <class name="round-button"/>
+                        </style>
+
+                    </object>
+                    <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">7</property>
+                    </packing>
+                </child>
+                <child>
+                    <object id="button-2" class="CalculatorButton">
+                        <property name="visible">True</property>
+                        <property name="label">2</property>
+                        <signal name="clicked" handler="on_button_clicked" swapped="no"/>
+                        <style>
+                            <class name="round-button"/>
+                        </style>
+
+                    </object>
+                    <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">7</property>
+                    </packing>
+                </child>
+                <child>
+                    <object id="button-3" class="CalculatorButton">
+                        <property name="visible">True</property>
+                        <property name="label">3</property>
+                        <signal name="clicked" handler="on_button_clicked" swapped="no"/>
+                        <style>
+                            <class name="round-button"/>
+                        </style>
+
+                    </object>
+                    <packing>
+                        <property name="left-attach">2</property>
+                        <property name="top-attach">7</property>
+                    </packing>
+                </child>
+                <child>
+                    <object id="button-add" class="CalculatorButton">
+                        <property name="visible">True</property>
+                        <property name="label">+</property>
+                        <signal name="clicked" handler="on_button_clicked" swapped="no"/>
+                        <style>
+                            <class name="round-button"/>
+                        </style>
+
+                    </object>
+                    <packing>
+                        <property name="left-attach">3</property>
+                        <property name="top-attach">7</property>
+                    </packing>
+                </child>
+                <!-- Add more buttons as needed -->
+                 <child>
+                    <object id="button-neg" class="CalculatorButton">
+                        <property name="visible">True</property>
+                        <property name="label">neg</property>
+                        <style>
+                            <class name="round-button"/>
+                        </style>
+
+                    </object>
+                    <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">8</property>
+                    </packing>
+                </child>
+                <child>
+                    <object id="button-0" class="CalculatorButton">
+                        <property name="visible">True</property>
+                        <property name="label">0</property>
+                        <signal name="clicked" handler="on_button_clicked" swapped="no"/>
+                        <style>
+                            <class name="round-button"/>
+                        </style>
+
+                    </object>
+                    <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">8</property>
+                    </packing>
+                </child>
+                <child>
+                    <object id="button-float" class="CalculatorButton">
+                        <property name="visible">True</property>
+                        <property name="label">.</property>
+                        <signal name="clicked" handler="on_button_clicked" swapped="no"/>
+                        <style>
+                            <class name="round-button"/>
+                        </style>
+
+                    </object>
+                    <packing>
+                        <property name="left-attach">2</property>
+                        <property name="top-attach">8</property>
+                    </packing>
+                </child>
+                <child>
+                    <object id="button-equal" class="CalculatorButton">
+                        <property name="visible">True</property>
+                        <property name="label">=</property>
+                        <style>
+                            <class name="round-button"/>
+                        </style>
+
+                    </object>
+                    <packing>
+                        <property name="left-attach">3</property>
+                        <property name="top-attach">8</property>
+                    </packing>
+                </child>
+            </object>
+        </child>
+    </template>
+</interface>
