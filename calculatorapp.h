@@ -7,13 +7,6 @@
 
 G_DECLARE_FINAL_TYPE (CalculatorApp, calculator_app, CALCULATOR, APP, GtkApplication)
 
-struct _CalculatorButton {
-    GtkButton parent;
-    int negative;
-    int digit;
-    // Define other members as needed
-};
-
 CalculatorApp *calculator_app_new(void);
 
 

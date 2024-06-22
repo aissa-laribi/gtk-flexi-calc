@@ -2,7 +2,6 @@
 
 #include "calculatorapp.h"
 #include "calculatorappwin.h"
-#include "calculatorbutton.h"
 
 struct _CalculatorApp{
     GtkApplication parent;

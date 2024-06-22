@@ -409,6 +409,8 @@ static void operation(CalculatorButton *button, CalculatorAppWindow *win){
                 win->current_float_operand += (9 % 10);
                 break;
             }
+        case 61:
+            total_display(win);
     }
 }
 
