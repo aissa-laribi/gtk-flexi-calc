@@ -486,7 +486,7 @@ static void operation(CalculatorButton *button, CalculatorAppWindow *win){
             gtk_text_buffer_get_start_iter(win->text_buffer, &start_iter);
             gtk_text_buffer_get_end_iter(win->text_buffer, &end_iter);
             /*TODO: copy and paste buffer somewhere for Ans and History*/
-            g_print("Buffer characters: %d\n", gtk_text_buffer_get_char_count(win->text_buffer));
+            /*g_print("Buffer characters: %d\n", gtk_text_buffer_get_char_count(win->text_buffer));*/
             gtk_text_buffer_delete(win->text_buffer, &start_iter, &end_iter );
             win->addition = FALSE;
             win->substraction = FALSE;
