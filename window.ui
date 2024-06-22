@@ -344,6 +344,7 @@
                     <object id="button-equal" class="CalculatorButton">
                         <property name="visible">True</property>
                         <property name="label">=</property>
+                        <signal name="clicked" handler="operation" swapped="no"/>
                         <style>
                             <class name="round-button"/>
                         </style>

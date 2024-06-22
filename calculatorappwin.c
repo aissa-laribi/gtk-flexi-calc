@@ -65,6 +65,7 @@ void total_display(CalculatorAppWindow *win) {
 static void operation(CalculatorButton *button, CalculatorAppWindow *win){
     const gchar *button_label = gtk_button_get_label(GTK_BUTTON (button) );
     const gchar *button_label_ascii = g_str_to_ascii(button_label, button_label_ascii);
+    g_print("Button_Label_ASCII:%s\n", button_label_ascii);
     int current;
     if(!win->floating){
         g_print("Not currently floating\n");
@@ -76,7 +77,7 @@ static void operation(CalculatorButton *button, CalculatorAppWindow *win){
     current = (int) *button_label_ascii - 48;
     switch(current){
         case 72: /*Multiplication sign in ASCII*/
-            if(!win->previous_operator){
+            if(!win->previous_operator){ 
                 win->total += win->current_int_operand;
                 win->previous_operand = win->current_int_operand;
                 total_display(win);
@@ -409,8 +410,90 @@ static void operation(CalculatorButton *button, CalculatorAppWindow *win){
                 win->current_float_operand += (9 % 10);
                 break;
             }
-        case 61:
-            total_display(win);
+        case 13: /*Equal sign in ASCII - 48*/
+
+        if(!win->previous_operator){
+                if(!win->floating){
+                    win->total += win->current_int_operand;
+                    win->previous_operand = win->current_int_operand;
+                    win->current_int_operand = 0;
+                    win->previous_operator = 2;
+                    total_display(win);
+
+                } else if(win->floating){
+                    win->total_float += win->current_float_operand;
+                    win->previous_float_operand = win->current_float_operand;
+                    total_display(win);
+                    win->current_float_operand = 0;
+                    win->previous_operator = 2;
+                }
+                
+            } else if(win->previous_operator == 1){
+                if(!win->floating){
+                    g_print("Win->total: %d, cur: %d, prev: %d", win->total,win->current_int_operand,win->previous_operand);
+                    win->total += (win->current_int_operand * win->previous_operand);
+                    win->previous_operand = win->current_int_operand;
+                    total_display(win);
+                    win->current_int_operand = 0;
+                    win->previous_operator = 2;
+                } else if(win->floating){
+                    g_print("Win->total_float: %f, cur_float: %f, prev_float: %f", win->total_float,win->current_float_operand,win->previous_float_operand);
+                    win->total_float += (win->current_float_operand * win->previous_float_operand);
+                    win->previous_float_operand = win->current_float_operand;
+                    total_display(win);
+                    win->current_float_operand = 0;
+                    win->previous_operator = 2;
+                }
+
+            } else if(win->previous_operator == 2){
+                if (!win->floating){
+                    win->total += win->current_int_operand ;
+                    total_display(win);
+                    win->previous_operand = win->current_int_operand;
+                    win->current_int_operand = 0;
+                    win->previous_operator = 2;
+                } else if(win->floating) {
+                    win->total_float += win->current_float_operand ;
+                    total_display(win);
+                    win->previous_float_operand = win->current_float_operand;
+                    win->current_float_operand = 0.00;
+                    win->previous_operator = 2;
+                } 
+            } else if(win->previous_operator == 3){
+                if (!win->floating){
+                    win->total -= win->current_int_operand;
+                    total_display(win);
+                    win->previous_operand = win->current_int_operand;
+                    win->current_int_operand = 0;
+                    win->previous_operator = 2;
+                } else if (win->floating){
+                    win->total_float -= win->current_float_operand;
+                    total_display(win);
+                    win->previous_float_operand = win->current_float_operand;
+                    win->current_float_operand = 0;
+                    win->previous_operator = 2;
+                }
+            } else if(win->previous_operator == 4){
+                g_print("Win->total_float: %f, cur: %f, prev: %f", win->total_float,win->current_float_operand,win->previous_float_operand);                
+                win->total_float /= win->current_float_operand;
+                win->previous_float_operand = win->current_float_operand;
+                total_display(win);
+                win->current_float_operand = 0.00;
+                win->previous_operator = 2;
+            }
+            GtkTextIter start_iter;    
+            GtkTextIter end_iter;
+            gtk_text_buffer_get_start_iter(win->text_buffer, &start_iter);
+            gtk_text_buffer_get_end_iter(win->text_buffer, &end_iter);
+            /*TODO: copy and paste buffer somewhere for Ans and History*/
+            g_print("Buffer characters: %d\n", gtk_text_buffer_get_char_count(win->text_buffer));
+            gtk_text_buffer_delete(win->text_buffer, &start_iter, &end_iter );
+            win->addition = FALSE;
+            win->substraction = FALSE;
+            win->multiplication = FALSE;
+            win->division = FALSE;
+            win->modulo = FALSE;
+            break;
     }
 }
 
@@ -419,6 +502,7 @@ static void on_button_clicked(CalculatorButton *button, CalculatorAppWindow *win
     const gchar *button_label = gtk_button_get_label(GTK_BUTTON (button) );
     const gchar *button_label_ascii = g_str_to_ascii(button_label, button_label_ascii);
     CalculatorButton *calc_button = CALCULATOR_BUTTON(button);
+
 
     
     GtkTextIter start_iter;    
