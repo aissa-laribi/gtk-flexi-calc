@@ -8,6 +8,17 @@ Currently in development
 
 ## Usage
 
-`glib-compile-resources calculatorapp.gresource.xml --target=resources.c --generate-source`
+1) Compile the ui template into a C file resources.c
+```
+glib-compile-resources calculatorapp.gresource.xml --target=resources.c --generate-source
+```
 
+2) Compile resources.c with the rest of the source code
+```
 gcc -o calculatorapp main.c calculatorapp.c calculatorappwin.c resources.c calculatorbutton.c `pkg-config --cflags --libs gtk+-3.0` -rdynamic
+```
+
+3) Run the executable file
+```
+./calculatorapp
+```
