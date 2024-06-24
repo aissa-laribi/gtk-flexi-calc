@@ -2,7 +2,7 @@
 
 Scalable calculator with basic arithmetic operations (addition, subtraction, and multiplication) built with the GTK Framework.
 
-[![Project Demo Video](./thumbnail.png)](./video.mp4)
+![Project Demo Video](./demo.gif)
 
 Currently in development
 
